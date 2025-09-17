@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #e3eaf2);
+    color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.login-box {
+    background: #ffffff;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #34495e;
+}
+
+.user-input {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+}
+
+.user-input .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #7f8c8d;
+    font-size: 1.2rem;
+}
+
+.user-input input {
+    width: 100%;
+    padding: 0.8rem 2.5rem 0.8rem 2.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.user-input input:focus {
+    border-color: #5396b7;
+    box-shadow: 0 0 8px rgba(83, 150, 183, 0.3);
+}
+
+.user-input label {
+    position: absolute;
+    top: 50%;
+    left: 2.5rem;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    color: #999;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+.user-input input:focus + label,
+.user-input input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.7rem;
+    color: #5396b7;
+}
+
+.asterisk {
+    color: red;
+    font-weight: bold;
+    margin-left: 5px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.error-message {
+    font-size: 0.8rem;
+    color: red;
+    margin-top: 5px;
+    display: block;
+    text-align: left;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+button#btn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    background-color: #5396b7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button#btn:hover {
+    background-color: #417a96;
+}
+
+.signup-account {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.signup-account a {
+    color: #5396b7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-account a:hover {
+    text-decoration: underline;
+    background-color: transparent !important;
+}
+
+@media (max-width: 500px) {
+    .login-box {
+        width: 90%;
+        padding: 1.5rem;
+    }
+    .login-box h2 {
+        font-size: 1.5rem;
+    }
+}

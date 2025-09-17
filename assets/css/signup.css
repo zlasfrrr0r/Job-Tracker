@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.signup-box {
+    width: 100%;
+    max-width: 400px;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.signup-box h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    font-size: 1.8rem;
+}
+
+.signup-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.user-input {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-input input {
+    width: 100%;
+    padding: 0.8rem 2.5rem 0.8rem 2.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.user-input input:focus {
+    border-color: #5396b7;
+    box-shadow: 0 0 8px rgba(83, 150, 183, 0.3);
+}
+
+.user-input label {
+    position: absolute;
+    top: 50%;
+    left: 2.5rem;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    color: #999;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+.user-input input:focus + label,
+.user-input input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: #5396b7;
+}
+
+.signup-box .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #5396b7;
+    font-size: 1.2rem;
+}
+
+.signup-box .asterisk {
+    color: red;
+    font-weight: bold;
+    margin-left: 5px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.signup-box .error-message {
+    font-size: 0.8rem;
+    color: red;
+    margin-top: 5px;
+    display: block;
+    text-align: left;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.signup-box button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    background-color: #5396b7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.signup-box button:hover {
+    background-color: #417a96;
+}
+
+.show-login {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.show-login a {
+    color: #5396b7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-box .show-login a:hover {
+    text-decoration: underline;
+    background-color: transparent;
+    color: #417a96;
+}
+
+@media (max-width: 500px) {
+    .signup-box {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .signup-box h2 {
+        font-size: 1.5rem;
+    }
+}
