@@ -1,2 +1,3 @@
 # Ignore database credentials
 includes/db.php
+.env
