@@ -29,39 +29,58 @@ if (isset($_SESSION['loggedin'])) {
         <title>Login - Job Tracker</title>
         <link rel=stylesheet href="assets/css/index.css">
         <script class="validate">
-            function valEmail(email) {
+
+            async function valEmail(email) {
+
                 if (email.length == 0) {
                     document.getElementById('email-error').innerHTML = "";
-                    return
-                } else {
-                    const xhttp = new XMLHttpRequest();
-                    xhttp.open('POST', 'val/validation.php', true);
-                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                    xhttp.onreadystatechange = function () {
-                        if (this.readyState == 4 && this.status == 200) {
-                            document.getElementById('email-error').innerHTML = this.responseText;
-                        }
-                    }
-                    xhttp.send('email=' + encodeURIComponent(email));
+                    return;
+                }
+                try {
+                    const response = await fetch('val/validation.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: new URLSearchParams({
+                            email: email
+                        })
+                    });
+
+                    const result = await response.text();
+                    document.getElementById('email-error').innerHTML = result;
+
+                } catch (err) {
+                    console.error('Request failed', err.message);
                 }
             }
 
-            function valPassword(password) {
+            async function valPassword(password) {
                 if (password.length == 0) {
                     document.getElementById('password-error').innerHTML = "";
                     return;
-                } else {
-                    const xhttp = new XMLHttpRequest();
-                    xhttp.open('POST', 'val/validation.php', true);
-                    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                    xhttp.onreadystatechange = function () {
-                        if (this.readyState == 4 && this.status == 200) {
-                            document.getElementById('password-error').innerHTML = this.responseText;
-                        }
-                    }
-                    xhttp.send('password=' + encodeURIComponent(password));
+                }
+                try {
+
+                    const response = await fetch('val/validation.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: new URLSearchParams({
+                            password: password
+                        })
+                    });
+
+                    const result = await response.text();
+                    document.getElementById('password-error').innerHTML = result;
+
+                } catch (err) {
+                    console.error('Request failed', err.message);
                 }
             }
+
+
         </script>
     </head>
 

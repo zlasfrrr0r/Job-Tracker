@@ -107,21 +107,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['current_password']) =
         </div>
 
         <script>
-            function valPassword(password) {
-                const errorMsg = document.getElementById('current_error');
+
+            async function valPassword(password) {
+                
                 if (password.length == 0) {
-                    errorMsg.innerHTML = "";
+                    document.getElementById('current_error').innerHTML = "";
                     return;
-                } else {
-                    xhttp = new XMLHttpRequest();
-                    xhttp.open("POST", "../val/validation.php", true);
-                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    xhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
-                            errorMsg.innerHTML = this.responseText;
-                        }
-                    }
-                    xhttp.send("password=" + encodeURIComponent(password));
+                }
+
+                try {
+
+                    const response = await fetch('..val/validation.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'x-www-form-urlencoded'
+                        },
+                        body: new URLSearchParams({
+                            password: password
+                        })
+                    });
+
+                    const result = await response.text();
+                    document.getElementById('current-error').innerHTML = result;
+
+                } catch (err) {
+                    console.error('Request failed ', err.message);
                 }
             }
 

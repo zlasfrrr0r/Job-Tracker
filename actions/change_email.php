@@ -79,21 +79,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_email'])) {
         </div>
 
         <script>
-            function valEmail(email) {
-                const errorMsg = document.getElementById('error-msg');
+
+            async function valEmail(email) {
                 if (email.length == 0) {
-                    errorMsg.innerHTML = "";
+                    document.getElementById('error-msg').innerHTML = "";
                     return;
-                } else {
-                    xhttp = new XMLHttpRequest();
-                    xhttp.open("POST", "../val/validation.php", true);
-                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    xhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
-                            errorMsg.innerHTML = this.responseText;
-                        }
-                    }
-                    xhttp.send("email=" + encodeURIComponent(email));
+                }
+
+                try {
+                     
+                    const response = await fetch('..val/validation.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoder'
+                        },
+                        body: new URLSearchParams({
+                            email: email
+                        })
+                    });
+
+                    const result = await response.text();
+                    document.getElementById('error-msg').innerHTML = result;
+
+                } catch (err) {
+                    console.error('Request failed ', err.message);
                 }
             }
         </script>
