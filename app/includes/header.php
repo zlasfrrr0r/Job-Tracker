@@ -1,6 +1,6 @@
 <html>
 <head>
-<?php define('BASE_URL', '/jobtracker/'); ?>
+<?php define('BASE_URL', '/'); ?>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
