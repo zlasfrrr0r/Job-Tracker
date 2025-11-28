@@ -11,4 +11,8 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 COPY . /var/www/html/
 
 # Give ownership to Apache for /uplaods folder
+RUN mkdir -p /var/www/html/uploads \
+    && chown -R www-data:www-data /var/www/html/uploads \
+    && chmod -R 755 /var/www/html/uploads
+
 RUN chown -R www-data:www-data /var/www/html/uploads

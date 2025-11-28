@@ -27,7 +27,7 @@ if (isset($_SESSION['password_changed'])) {
     unset($_SESSION['password_changed']);
 }
 
-chmod('uploads', 755);
+// chmod('uploads', 755);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['avatar'])) {
     $file = $_FILES['avatar'];
