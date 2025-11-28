@@ -69,7 +69,7 @@ if (isset($_POST['signup'])) {
 
 function check_login($email, $pass_word, $remember) {
     
-    include "includes/db.php";
+    include "./includes/db.php";
     $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?;");
     $stmt->bind_param("s", $email);
     $stmt->execute();
