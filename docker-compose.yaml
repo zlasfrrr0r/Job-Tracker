@@ -10,13 +10,15 @@ services:
     depends_on:
       - db # DB Starts first
   db:
-    image: mysql
+    image: mysql:8
     container_name: jobtracker_db
     restart: always
     environment:
-      - MYSQL_USER: ${MYSQL_USER}
-      - MYSQL_PASS: ${MYSQL_PASS}
-      - DB_NAME: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASS: ${MYSQL_PASS}
     ports:
       - "3306:3306"
     volumes:
