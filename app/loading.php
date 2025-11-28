@@ -103,8 +103,6 @@ function check_login($email, $pass_word, $remember) {
             exit();
         }
     }
-    $stmt->close();
-    $conn->close();
 }
 
 function check_signup($user_name, $email, $pass_word, $remember) {
